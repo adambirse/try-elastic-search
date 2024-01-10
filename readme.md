@@ -9,21 +9,8 @@ Create an index called products:
 ```bash
 curl -X PUT http://localhost:9200/products
 ```
-
-Add a product:
-
-```bash
-curl -X POST -H 'Content-Type: application/json' -d '{ "name": "Awesome T-Shirt", "description": "This is an awesome t-shirt for casual wear.", "price": 19.99, "category": "Clothing", "brand": "Example Brand" }' http://localhost:9200/products/_doc
-```
-
-Query for products:
-```bash
-curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d' { "query": { "match": { "name": "t-shirt" } } }'
-```
-Get all products:
-```bash
-curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json'
-```
+or 
+`./create_product_index.sh`
 
 Bulk insert:
 
@@ -31,6 +18,81 @@ Bulk insert:
 curl -s -H "Content-Type: application/json" -X POST \
 'http://localhost:9200/_bulk?pretty' --data-binary @products.json
 ```
+or
+`./product_data_load.sh`
+
+
+
+Query for products:
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d' { "query": { "match": { "title": "shoes" } } }'
+```
+
+More complicated query:
+
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "shoes"    }},
+        { "match": { "person": "Adam" }}
+      ]
+    }
+  }
+}
+'
+```
+
+Filter example:
+
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "shoes"    }},
+        { "match": { "person": "Adam" }}
+      ],
+       "filter": [ 
+        { "term":  { "status": "avaliable" }}
+      ]
+    }
+  }
+}
+'
+```
+
+Sort example (not working yet as index doesnt support sorting - need to reindex):
+
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": { 
+    "bool": { 
+      "must": [
+        { "match": { "title":   "shoes"    }},
+        { "match": { "person": "Adam" }}
+      ],
+       "filter": [ 
+        { "term":  { "status": "avaliable" }}
+      ]
+    }
+  },
+    "sort" : [
+        { "status" : {"order" : "asc"}}
+    ]
+}
+'
+```
+
+Get all products:
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json'
+```
+
 
 ## Reference Material
 

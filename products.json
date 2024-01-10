@@ -1,8 +1,14 @@
 { "index" : { "_index" : "products", "_id" : "1" } }
-{ "title" : "Nike Running Shoes" }
+{ "title" : "Nike Running Shoes", "person" : "James Mary", "status": "avaliable" }
 { "index" : { "_index" : "products", "_id" : "2" } }
-{ "title" : "Adidas Basketball Shoes" }
+{ "title" : "Adidas Basketball Shoes","person" : "Donald Donaldson", "status": "avaliable" }
 { "index" : { "_index" : "products", "_id" : "3" } }
-{ "title" : "fish hooks" }
+{ "title" : "fish hooks", "person" : "Hairy Mclairy", "status": "avaliable" }
+{ "index" : { "_index" : "products", "_id" : "4" } }
+{ "title" : "potato", "person" : "Adam ", "status": "avaliable" }
+{ "index" : { "_index" : "products", "_id" : "5" } }
+{ "title" : "shoes", "person" : "Adam ","status": "avaliable" }
+{ "index" : { "_index" : "products", "_id" : "6" } }
+{ "title" : "shoes", "person" : "Adam ","status": "sold out" }
 
 

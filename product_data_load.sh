@@ -1,3 +1,2 @@
-curl -X POST -H 'Content-Type: application/json' -d '{ "name": "Awesome T-Shirt", "description": "This is an awesome t-shirt for casual wear.", "price": 19.99, "category": "Clothing", "brand": "Example Brand" }' http://localhost:9200/products/_doc
-curl -X POST -H 'Content-Type: application/json' -d '{ "name": "Rubbish T-Shirt", "description": "This is an rubbish t-shirt for casual wear.", "price": 19.99, "category": "Clothing", "brand": "Example Brand" }' http://localhost:9200/products/_doc
-curl -X POST -H 'Content-Type: application/json' -d '{ "name": "Baggy trousers", "description": "Trousers that dont quite fit.", "price": 1.25, "category": "Clothing", "brand": "foo" }' http://localhost:9200/products/_doc
+curl -s -H "Content-Type: application/json" -X POST \
+'http://localhost:9200/_bulk?pretty' --data-binary @products.json
