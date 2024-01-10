@@ -20,6 +20,10 @@ Query for products:
 ```bash
 curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json' -d' { "query": { "match": { "name": "t-shirt" } } }'
 ```
+Get all products:
+```bash
+curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: application/json'
+```
 
 ## Reference Material
 
