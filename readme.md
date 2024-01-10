@@ -97,4 +97,7 @@ curl -X GET "localhost:9200/products/_search?pretty" -H 'Content-Type: applicati
 ## Reference Material
 
 [A beginners guide to elastic search](https://geshan.com.np/blog/2023/06/elasticsearch-docker/)
+
 [Bulk upload](https://typesense.org/learn/elasticsearch-bulk-import-json/)
+
+https://makit.net/blog/building-with-aws-opensearch-serverless/
